@@ -19,15 +19,11 @@ vim.cmd([[
     hi NormalNC guibg=NONE ctermbg=NONE
     hi EndOfBuffer guibg=NONE ctermbg=NONE
     hi LineNr guibg=NONE ctermbg=NONE
-    hi DiagnosticUnderlineError gui=NONE cterm=NONE
-    hi DiagnosticUnderlineWarn gui=NONE cterm=NONE
-    hi DiagnosticUnderlineInfo gui=NONE cterm=NONE
-    hi DiagnosticUnderlineHint gui=NONE cterm=NONE
-    hi DiagnosticUnderlineError guifg=#333333
-    hi DiagnosticUnderlineWarn guifg=#333333
-    hi DiagnosticUnderlineInfo guifg=#333333
-    hi DiagnosticUnderlineHint guifg=#333333
-     hi LspReferenceText guibg=#222222 gui=NONE
+    hi DiagnosticUnderlineError gui=NONE cterm=NONE guifg=#333333
+    hi DiagnosticUnderlineWarn gui=NONE cterm=NONE guifg=#333333
+    hi DiagnosticUnderlineInfo gui=NONE cterm=NONE guifg=#333333
+    hi DiagnosticUnderlineHint gui=NONE cterm=NONE guifg=#333333
+    hi LspReferenceText guibg=#222222 gui=NONE
     hi LspReferenceRead guibg=#222222 gui=NONE
     hi LspReferenceWrite guibg=#222222 gui=NONE
 ]])

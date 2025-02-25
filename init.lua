@@ -23,8 +23,11 @@ vim.cmd([[
     hi DiagnosticUnderlineWarn gui=NONE cterm=NONE
     hi DiagnosticUnderlineInfo gui=NONE cterm=NONE
     hi DiagnosticUnderlineHint gui=NONE cterm=NONE
-    hi DiagnosticUnderlineError guibg=#330000
-    hi DiagnosticUnderlineWarn guibg=#332200
-    hi DiagnosticUnderlineInfo guibg=#002233
-    hi DiagnosticUnderlineHint guibg=#003300
+    hi DiagnosticUnderlineError guifg=#333333
+    hi DiagnosticUnderlineWarn guifg=#333333
+    hi DiagnosticUnderlineInfo guifg=#333333
+    hi DiagnosticUnderlineHint guifg=#333333
+     hi LspReferenceText guibg=#222222 gui=NONE
+    hi LspReferenceRead guibg=#222222 gui=NONE
+    hi LspReferenceWrite guibg=#222222 gui=NONE
 ]])

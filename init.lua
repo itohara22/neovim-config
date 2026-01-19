@@ -15,6 +15,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 ------
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 6
+vim.opt.tabstop = 6
+vim.opt.softtabstop = 6
+
 vim.opt.statuscolumn = "%=%l  "
 vim.opt.laststatus = 0
 vim.opt.ignorecase = true

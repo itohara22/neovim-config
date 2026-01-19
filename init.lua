@@ -15,10 +15,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 ------
-vim.opt.statuscolumn = "%=%l   "
+vim.opt.statuscolumn = "%=%l  "
 vim.opt.laststatus = 0
 vim.opt.ignorecase = true
-vim.cmd("colorscheme torte")
 vim.g.mapleader = " "
 vim.opt.clipboard = "unnamedplus"
 
@@ -26,7 +25,6 @@ vim.opt.number = true
 
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
--- vim.g.netrw_browse_split = 3
 vim.g.netrw_altv = 1
 vim.g.netrw_winsize = 25
 
@@ -44,12 +42,6 @@ vim.keymap.set("n", "<leader>q", "<C-w>q", {
     desc = "Close current pane",
 })
 
-vim.opt.termguicolors = true
-
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 
 require("lazy").setup({
     {
@@ -63,6 +55,10 @@ require("lazy").setup({
     },
     {
         "stevearc/oil.nvim"
+    },
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
     }
 })
 
@@ -116,3 +112,11 @@ vim.keymap.set("n", "<Space>bo", function()
         end
     end
 end, { desc = "Close other buffers" })
+
+-- colorschemes
+vim.cmd("colorscheme rose-pine")
+vim.opt.termguicolors = true
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })

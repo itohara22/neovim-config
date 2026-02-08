@@ -16,11 +16,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 ------
 vim.opt.expandtab = true
-vim.opt.shiftwidth = 6
-vim.opt.tabstop = 6
-vim.opt.softtabstop = 6
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
 
-vim.opt.statuscolumn = "%=%l  "
+vim.opt.numberwidth = 4
+vim.opt.signcolumn = "yes"
+vim.opt.statuscolumn = "%s%=%l  "
 vim.opt.laststatus = 0
 vim.opt.ignorecase = true
 vim.g.mapleader = " "
@@ -46,7 +48,13 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right pane" })
 vim.keymap.set("n", "<leader>q", "<C-w>q", {
     desc = "Close current pane",
 })
-
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
+vim.keymap.set("n", "<leader>ai", function()
+  vim.lsp.buf.code_action({
+    apply = true,
+    context = { only = { "source.addMissingImports.ts" } },
+  })
+end)
 
 require("lazy").setup({
     {
@@ -64,12 +72,20 @@ require("lazy").setup({
     {
         "rose-pine/neovim",
         name = "rose-pine",
-    }
+    },
+    { 'nvim-mini/mini.pairs', version = '*' },
+    -- {
+    --    "shaunsingh/nord.nvim"
+    -- }
+
 })
+
+-- mini pairs
+require('mini.pairs').setup()
 
 -- telescope config
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
@@ -82,23 +98,30 @@ local on_attach = function(_, bufnr)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 end
 
--- C / C++
-vim.lsp.config("clangd", {
-    cmd = { "clangd" },
-    on_attach = on_attach,
-})
+-- typescript
+-- vim.lsp.config("tsserver", {
+--     cmd = {"typescript-language-server", "--stdio"},
+--     on_attach = on_attach,
+-- })
 
--- Go
-vim.lsp.config("gopls", {
-    cmd = { "gopls" },
-    on_attach = on_attach,
+vim.lsp.config("vtsls", {
+  cmd = { "vtsls", "--stdio" },
+  on_attach = on_attach,
 })
 
 vim.lsp.enable({
-    "clangd",
-    "gopls",
+    -- "tsserver"
+    "vtsls"
 })
-vim.diagnostic.enable(false)
+
+vim.diagnostic.enable(true)
+
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+--   callback = function()
+--     vim.diagnostic.enable(true, { bufnr = 0 })
+--   end,
+-- })
 
 ---oil.nvim config
 require("oil").setup()
@@ -118,10 +141,20 @@ vim.keymap.set("n", "<Space>bo", function()
     end
 end, { desc = "Close other buffers" })
 
--- colorschemes
-vim.cmd("colorscheme rose-pine")
-vim.opt.termguicolors = true
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+--colorschemes
+require("rose-pine").setup({
+   variant = "moon",
+   styles = {
+        bold = true,
+        italic = false,
+        transparency = true,
+    },
+})
+ vim.cmd("colorscheme rose-pine")
+-- vim.cmd("colorscheme nord")
+
+-- vim.opt.termguicolors = true
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })

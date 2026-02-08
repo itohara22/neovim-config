@@ -77,8 +77,37 @@ require("lazy").setup({
     -- {
     --    "shaunsingh/nord.nvim"
     -- }
-
+    {
+      "hrsh7th/nvim-cmp",
+       dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            "L3MON4D3/LuaSnip",
+        },
+    }
 })
+
+-- Intellisense snippets
+local cmp = require("cmp")
+cmp.setup({
+  completion = {
+    autocomplete = false,
+  },
+  snippet = {
+    expand = function(args)
+      require("luasnip").lsp_expand(args.body)
+    end,
+  },
+  -- mapping = cmp.mapping.preset.insert({
+  --   ["<C-Space>"] = cmp.mapping.complete(),
+  --   ["<CR>"] = cmp.mapping.confirm({ select = true }),
+  -- }),
+  sources = {
+    { name = "nvim_lsp" },
+  },
+})
+vim.keymap.set("i", "<C-l>", function()
+  require("cmp").complete()
+end)
 
 -- mini pairs
 require('mini.pairs').setup()
@@ -158,3 +187,5 @@ require("rose-pine").setup({
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+
+

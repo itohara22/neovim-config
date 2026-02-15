@@ -7,7 +7,7 @@ vim.opt.scrolloff = 8
 vim.opt.numberwidth = 4
 vim.opt.signcolumn = "yes"
 vim.opt.statuscolumn = "%s%=%l  "
-vim.opt.laststatus = 0
+vim.opt.laststatus = 2
 vim.opt.ignorecase = true
 vim.g.mapleader = " "
 vim.opt.clipboard = "unnamedplus"

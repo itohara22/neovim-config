@@ -46,7 +46,9 @@ require("lazy").setup({
       "oskarnurm/koda.nvim",
       lazy = false, -- make sure we load this during startup if it is your main colorscheme
       priority = 1000,
-  }
+    },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    { "ellisonleao/gruvbox.nvim",  priority = 1000}
 })
 
 require('mini.pairs').setup()

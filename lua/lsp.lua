@@ -15,6 +15,20 @@ vim.lsp.config("vtsls", {
   on_attach = on_attach,
 })
 
+-- C / C++
+vim.lsp.config("clangd", {
+    cmd = { "clangd" },
+    on_attach = on_attach,
+})
+
+-- Go
+vim.lsp.config("gopls", {
+    cmd = { "gopls" },
+    on_attach = on_attach,
+})
+
 vim.lsp.enable({
-    "vtsls"
+    "vtsls",
+    "clangd",
+    "gopls"
 })

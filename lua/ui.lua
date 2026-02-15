@@ -14,6 +14,7 @@ require("koda").setup({
 })
 
 vim.cmd("colorscheme koda")
+vim.o.background = 'dark'
 
 -- Hover window
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1a1a1a" })

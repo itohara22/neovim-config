@@ -23,3 +23,4 @@ vim.keymap.set("n", "<Space>bo", function()
         end
     end
 end, { desc = "Close other buffers" })
+

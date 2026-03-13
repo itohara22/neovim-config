@@ -4,7 +4,7 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 
 vim.opt.scrolloff = 8
-vim.opt.numberwidth = 4
+vim.opt.numberwidth = 6
 vim.opt.signcolumn = "yes"
 vim.opt.statuscolumn = "%s%=%l  "
 vim.opt.laststatus = 2

@@ -32,9 +32,6 @@ require("lazy").setup({
         name = "rose-pine",
     },
     { 'nvim-mini/mini.pairs', version = '*' },
-    -- {
-    --    "shaunsingh/nord.nvim"
-    -- }
     {
       "hrsh7th/nvim-cmp",
        dependencies = {
@@ -44,11 +41,21 @@ require("lazy").setup({
     },
     {
       "oskarnurm/koda.nvim",
-      lazy = false, -- make sure we load this during startup if it is your main colorscheme
+      lazy = false,
       priority = 1000,
     },
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-    { "ellisonleao/gruvbox.nvim",  priority = 1000}
+    { "ellisonleao/gruvbox.nvim",  priority = 1000},
+    { "rebelot/kanagawa.nvim",  priority = 1000},
+    { "metalelf0/black-metal-theme-neovim", lazy = false, priority = 1000 },
+    -- {
+    --     "lukas-reineke/indent-blankline.nvim",
+    --     main = "ibl",
+    --     ---@module "ibl"
+    --     ---@type ibl.config
+    --     opts = {},
+    -- }
+    { "phha/zenburn.nvim", name= "zenburn", priority = 1000, lazy = false }
 })
 
 require('mini.pairs').setup()
@@ -64,3 +71,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
+-- require("ibl").setup({
+--     -- indent = { char = "·" },
+--     indent = { char = "|" },
+-- })
